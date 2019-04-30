@@ -1,0 +1,50 @@
+@model Wedding
+
+<h1>Plan Your Wedding</h1>
+<a href="/Dashboard">Dashboard</a> | <a href="/logout">Logout</a>
+<br><br>
+<form asp-action="btAddWed" asp-controller="Home" method="POST">
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Wedder One</label>
+        <br><span asp-validation-for="WedOne"></span>
+        <div class="col-sm-10">
+            <input asp-for="WedOne" type="text" class="form-control" id="inputEmail3">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Wedder Two</label>
+        <br><span asp-validation-for="WedTwo"></span>
+        <div class="col-sm-10">
+            <input asp-for="WedTwo" type="text" class="form-control" id="inputEmail3">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
+        <br><span asp-validation-for="WedDate"></span>
+        <div class="col-sm-10">
+            <input asp-for="WedDate" type="text" class="form-control selector">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Wedding Address</label>
+        <br><span asp-validation-for="WedAddress"></span>
+        <div class="col-sm-10">
+            <input asp-for="WedAddress" type="text" class="form-control" id="inputEmail3">
+        </div>
+        <input asp-for="UserId" type="hidden" value="@ViewBag.Userid">
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</form>
+<script>
+    $( ".selector" ).datepicker({
+     minDate: new Date(),
+     changeYear: true
+});
+</script>

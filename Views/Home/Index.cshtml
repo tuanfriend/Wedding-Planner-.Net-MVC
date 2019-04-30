@@ -1,0 +1,35 @@
+﻿@model User
+
+    <div class="twocolumn">
+        <h1>Registration</h1>
+        
+        <form asp-action="register" asp-controller="Home" method="POST">
+            <table class="table table-striped">
+                <tr>
+                    <td>First Name <br><span asp-validation-for="FirstName"></span></td>
+                    <td><input type="text" asp-for="FirstName"></td>
+                </tr>
+                 <tr>
+                    <td>Last Name <br><span asp-validation-for="LastName"></span></td>
+                    <td><input type="text" asp-for="LastName"></td>
+                </tr>
+                <tr>
+                    <td>Email <br><span asp-validation-for="Email"></span></td>
+                    <td><input type="text" asp-for="Email"></td>
+                </tr>
+                <tr>
+                    <td>Password <br><span asp-validation-for="Password"></span></td>
+                    <td><input type="password" asp-for="Password"></td>
+                </tr>
+                <tr>
+                    <td>Confirm PW </td>
+                    <td><input type="password" asp-for="ConfirmPw"></td>
+                </tr>
+            </table>
+            
+            <input class="bt" type="submit" value="Register">
+        </form>
+    </div>
+    <div class="twocolumn">
+        <partial name="Login"/>
+    </div>

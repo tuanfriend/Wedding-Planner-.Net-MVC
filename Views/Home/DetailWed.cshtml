@@ -1,0 +1,55 @@
+<h1>@ViewBag.Wedinfo.WedOne & @ViewBag.Wedinfo.WedTwo Wedding!</h1>
+<a href="/Dashboard">Dashboard</a> | <a href="/logout">Logout</a>
+<br><br>
+<p>@ViewBag.Wedinfo.WedDate</p>
+<div class="twocolumn">
+    <h3>Guests: @ViewBag.ListGuest.WedtoUser.Count</h3>
+    <ul>
+        @foreach(var i in ViewBag.ListGuest.WedtoUser){
+        <li>
+            @i.User.FirstName @i.User.LastName
+        </li>
+        }
+
+    </ul>
+</div>
+<div class="twocolumn">
+
+    <div id="dvMap" style="height:250px;"></div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAHWecIMjn876mb_VgRE8DXcYNgh__-GFk&callback=initMap"
+        async defer></script>
+    <script type="text/javascript">
+        function initMap() {
+            //map..
+            var map = new google.maps.Map(document.getElementById('dvMap'), {
+                center: {
+                    lat: @ViewBag.Lati,
+                    lng: @ViewBag.Long
+        },
+        zoom: 15
+    });
+        //marker..
+        var marker = new google.maps.Marker({
+            position: {
+                lat: @ViewBag.Lati,
+        lng: @ViewBag.Long
+        },
+        map: map,
+            draggable: true
+    });
+
+        //dragend event of marker
+        google.maps.event.addListener(marker, 'dragend', function () {
+            var Lats = marker.getPosition().lat();
+            var Longs = marker.getPosition().lng();
+
+            $('#Lat').val(Lats);
+            $('#Long').val(Longs);
+
+        });
+}
+    </script>
+
+</div>

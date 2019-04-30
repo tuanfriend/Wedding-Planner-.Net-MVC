@@ -1,0 +1,50 @@
+@model WedConnect
+<h1>Welcome to the Wedding Planer!!!</h1>
+<a>@ViewBag.samedayrs</a>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Wedding</th>
+        <th scope="col">Date</th>
+        <th scope="col">Guest</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach(var i in ViewBag.AllWed){
+            <tr>
+                    <td><a href="/detail/@i.WeddingId">@i.WedOne & @i.WedTwo</a></td>
+                    <td>@i.WedDate</td>
+                    <td>@i.WedtoUser.Count</td>
+                    <td>@if(i.WedtoUser.Count == 0){
+                            <a href="/addrsvp/@i.WeddingId/@ViewBag.Userid">RSVP</a>
+                        }
+                        @if(i.WedtoUser.Count > 0)
+                        {
+                            int resert = 0;
+                            bool rsvp = false;
+                            @foreach(var y in i.WedtoUser){
+                                @if(y.UserId == ViewBag.Userid){
+                                    rsvp = true;
+                                    resert = y.WedConnectId;
+                                }
+                            }
+                            @if(rsvp == true){
+                                <a href="/unrsvp/@resert">Un-RSVP</a>
+                            }
+                            @if(rsvp == false){
+                                <a href="/addrsvp/@i.WeddingId/@ViewBag.Userid">RSVP</a>
+                            }
+                        }
+
+                    @if(ViewBag.Userid == @i.UserId){
+                        <a> | </a> <a href="/delete/@i.WeddingId">Delete</a>
+                    }
+                    </td>
+                  </tr>
+        }
+    </tbody>
+  </table>
+
+  <a href="/newwedding"><button type="button" class="btn btn-primary">New Wedding</button></a>

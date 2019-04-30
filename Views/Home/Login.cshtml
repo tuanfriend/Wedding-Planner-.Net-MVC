@@ -1,0 +1,16 @@
+@model LoginUser
+        <h1>Login</h1>
+        <form class="form-inline" asp-action="login" asp-controller="Home" method="POST">
+
+            <table class="table table-striped">
+                <tr>
+                    <td>Email <br><span asp-validation-for="LoginEmail"></span></td>
+                    <td><input type="text" asp-for="LoginEmail"></td>
+                </tr>
+                <tr>
+                    <td>Password <br><span asp-validation-for="LoginPassword"></span></td>
+                    <td><input type="password" asp-for="LoginPassword"></td>
+                </tr>
+            </table>
+            <input class="bt" type="submit" value="Login">
+        </form>

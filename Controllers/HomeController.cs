@@ -172,7 +172,7 @@ namespace WeddingProj.Controllers
             ViewBag.ListGuest = ListGuest;
 
 
-            GoogleSigned.AssignAllServices(new GoogleSigned("AIzaSyAHWecIMjn876mb_VgRE8DXcYNgh__-GFk"));
+            GoogleSigned.AssignAllServices(new GoogleSigned("I have to hide my google api key"));
 
             var request = new GeocodingRequest();
             request.Address = a.WedAddress;
